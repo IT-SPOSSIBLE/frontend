@@ -1,0 +1,193 @@
+@import url('https://fonts.cdnfonts.com/css/tisa-sans-pro');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Tisa Sans Pro", "sans-serif";
+  --breakpoint-3xl: 120rem;
+  --color-primary:#EC5800;
+  --color-secondary:#154360 ;
+  --color-thirdy:#1a5276 ;
+  --color-first:#6495ED;
+  --color-tertiary:#F5F5F5;
+  --color-background:#F5F5F5;
+  --color-side:#E6F0FA;
+  --color-side-text:#333333;
+  --font-family: 'Tisa Sans Pro', sans-serif;
+
+  
+                                                
+}
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  font-family: var(--font-display);
+}
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-md {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+@layer components {
+  .card {
+    @apply bg-white shadow-lg rounded-lg p-6;
+    @apply transition-transform duration-300 ease-in-out;
+    &:hover {
+      @apply transform scale-105;
+    }
+  }
+}
+@keyframes pulse-white {
+  0%, 100% {
+    box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.877);
+  }
+}
+
+@layer utilities {
+  .hover\:animate-pulse-white:hover {
+    animation: pulse-white 1.5s ease-in-out infinite;
+  }
+}
+@keyframes grow-x {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+
+
+@keyframes grow-xy {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-grow-x {
+    animation: grow-x 1.5s ease-out forwards;
+    transform-origin: left;
+    display: inline-block;
+  }
+
+  .animate-grow-y {
+    animation: grow-y 1.5s ease-out forwards;
+    transform-origin: top;
+    display: inline-block;
+  }
+
+  .animate-grow-xy {
+    animation: grow-xy 1.5s ease-out forwards;
+    transform-origin: center;
+    display: inline-block;
+  }
+}
+@keyframes grow-y {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-grow-y {
+    animation: grow-y 1.5s ease-out forwards;
+    transform-origin: center top;
+    display: inline-block;
+  }
+}
+
+@keyframes slide-in-x {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-slide-in-x {
+    animation: slide-in-x 0.6s ease-out forwards;
+  }
+}
+
+
+@keyframes slide-in-slow-right-to-left {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-slide-slow-x {
+    animation: slide-in-slow-right-to-left 2s ease-out forwards;
+  }
+}
