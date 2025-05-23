@@ -1,13 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./routes/APPRouter";
-import ThemesContextProvider from "./contexts/ThemesContextProvider";
+import { AuthProvider } from "./contexts/AuthProvider";
 const App = () => {
   return (
-    <ThemesContextProvider>
+    <AuthProvider>
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
-    </ThemesContextProvider>
+    </AuthProvider>
   );
 };
 

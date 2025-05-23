@@ -94,3 +94,7 @@ export const ROUTES: Routes = {
 
 
 export const routes:RoutConfiguration[]=Object.values(ROUTES);
+export const navButtons: RoutConfiguration[] = routes.filter(
+    (route) => route.fornav
+  );
+  
