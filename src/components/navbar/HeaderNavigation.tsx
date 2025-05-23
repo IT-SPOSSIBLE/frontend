@@ -1,18 +1,21 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { routes } from "../../routes/routes";
 import { motion } from "framer-motion";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const HeaderNavigation: React.FC = () => {
   const auth = useContext(AuthContext);
+  const navigate = useNavigate();
   if (!auth) return null;
 
-  const handleLogout = async () => {
-    if (auth.logout) {
-      await auth.logout();
-    }
-  };
+ const handleLogout = async () => {
+  if (auth?.logout && auth.accessToken && auth.refreshToken) {
+    await auth.logout(auth.refreshToken, auth.accessToken);
+    navigate("/login");
+  }
+};
+
 
   return (
     <div>
@@ -31,30 +34,20 @@ const HeaderNavigation: React.FC = () => {
 
         {/* Navigation + Auth Buttons */}
         <div className="col-span-4 flex justify-end items-center me-6 space-x-4">
-        {auth.accessToken && auth.email && (
-            <>
-              <span className="text-primary font-semibold text-sm">
-                Welcome, {auth.email}
-              </span>
-            
-            </>
+          {auth.accessToken && auth.email && (
+            <span className="text-primary font-semibold text-sm">
+              Welcome, {auth.email}
+            </span>
           )}
 
           <nav>
             <ul className="flex items-center space-x-1">
               {routes
-                .filter((route) => {
-                  if (!auth.accessToken) {
-                    return route.isPublic && route.fornav;
-                  } else {
-                    // Hide "Ingia" and "Jisajili" for logged in users
-                    return (
-                      route.fornav &&
-                      route.name !== "Ingia" &&
-                      route.name !== "Jisajili"
-                    );
-                  }
-                })
+                .filter((route) =>
+                  !auth.accessToken
+                    ? route.isPublic && route.fornav
+                    : route.fornav && route.name !== "Ingia" && route.name !== "Jisajili"
+                )
                 .map((route) => (
                   <li key={route.name}>
                     <motion.button
@@ -76,16 +69,14 @@ const HeaderNavigation: React.FC = () => {
                 ))}
             </ul>
           </nav>
+
           {auth.accessToken && auth.email && (
-            <>
-             
-              <button
-                onClick={handleLogout}
-                className="bg-primary text-white text-xs px-4 py-2 rounded hover:bg-primary/80 ease-in-out hover:animate-pulse-white transition-300"
-              >
-                Logout
-              </button>
-            </>
+            <button
+              onClick={handleLogout}
+              className="bg-primary text-white text-xs px-4 py-2 rounded hover:bg-primary/80 ease-in-out hover:animate-pulse-white transition-300"
+            >
+              Logout
+            </button>
           )}
         </div>
       </div>

@@ -1,6 +1,7 @@
 // types/UserRegistrationData.ts
 
-export type UserRole = 'buyer' | 'seller';
+export type UserRole = '' | 'buyer' | 'seller';
+
 
 export interface UserRegistrationData {
   email: string;

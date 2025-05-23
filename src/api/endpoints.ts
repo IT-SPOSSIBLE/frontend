@@ -39,15 +39,18 @@ export const API_ENDPOINTS = {
       delete: (id: string | number) => `/products/${id}/`,
     },
   
-    users: {
-      forgotPassword: "/users/forgot-password/",
-      loginToken: "/users/login/token/",
-      profile: {
-        list: "/users/profile/",
-        update: "/users/profile/",
-      },
-      register: "/users/register/",
-      resetPassword: (token: string) => `/users/reset-password/${token}/`,
-    },
+users: {
+  forgotPassword: "/users/forgot-password/",
+  loginToken: "/users/login/token/",
+  profile: {
+    list: "/users/profile/",
+    update: "/users/profile/",
+  },
+  register: "/users/register/",
+  resetPassword: (token: string) => `/users/reset-password/${token}/`,
+  logout: "/users/logout/", // ✅ Add this
+  refreshToken: "/users/refresh-token", // ✅ Add this
+},
+
   };
   

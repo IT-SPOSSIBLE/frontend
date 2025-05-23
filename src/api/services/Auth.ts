@@ -1,5 +1,5 @@
-import { apiclient } from '../client';
-import { API_ENDPOINTS } from '../endpoints'; // adjust the path as necessary
+import { apiclient } from "../client";
+import { API_ENDPOINTS } from "../endpoints"; // adjust the path as necessary
 
 interface LoginResponse {
   access: string;
@@ -20,10 +20,10 @@ export const login = async (
       API_ENDPOINTS.users.loginToken,
       { email, password }
     );
-    console.log('Login response:', response.data);
+    console.log("Login response:", response.data);
     return response.data;
   } catch (error) {
-    console.error('Login error:', error);
+    console.error("Login error:", error);
     throw error;
   }
 };
@@ -31,21 +31,53 @@ export const login = async (
 export const refreshToken = async (): Promise<string> => {
   try {
     const response = await apiclient.post<RefreshTokenResponse>(
-      '/users/refresh-token', // optionally move this to API_ENDPOINTS.users.refreshToken
+      "/users/refresh-token", // optionally move this to API_ENDPOINTS.users.refreshToken
       {}
     );
     return response.data.accessToken;
   } catch (error) {
-    console.error('Refresh token error:', error);
+    console.error("Refresh token error:", error);
     throw error;
   }
 };
 
-export const logout = async (): Promise<void> => {
+export const logout = async (
+  refresh: string,
+  accessToken: string
+): Promise<void> => {
   try {
-    await apiclient.post('/users/logout/'); // optionally move this to API_ENDPOINTS.users.logout
+    await apiclient.post(
+      API_ENDPOINTS.users.logout,
+      { refresh },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
   } catch (error) {
-    console.error('Logout error:', error);
+    console.error("Logout error:", error);
+    throw error;
+  }
+};
+
+
+interface RegisterPayload {
+  first_name: string;
+  middle_name: string;
+  last_name: string;
+  phone_number: string;
+  email: string;
+  password: string;
+  role: string;
+}
+
+export const register = async (data: RegisterPayload): Promise<void> => {
+  try {
+    const response = await apiclient.post(API_ENDPOINTS.users.register, data);
+    console.log('Registration response:', response.data);
+  } catch (error) {
+    console.error('Registration error:', error);
     throw error;
   }
 };
