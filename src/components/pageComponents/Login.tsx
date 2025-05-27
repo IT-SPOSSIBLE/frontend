@@ -86,12 +86,22 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
           </a>
         </div>
         {(isLoggingIn || loginSuccess) && (
-  <div className="absolute inset-0 z-50 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-md">
-    <div className="flex flex-col items-center gap-4 text-center">
+  <div className="absolute inset-0 z-50 bg-slate-100/80 backdrop-blur-md flex items-center justify-center rounded-md p-4">
+    {/* Inner Card for content */}
+    <div
+      className="
+        bg-white shadow-xl rounded-lg p-6 sm:p-8
+        flex flex-col items-center gap-4 text-center
+        w-full max-w-xs
+        font-serifLoader {/* Or remove if you want default Tisa Sans Pro */}
+        animate-loader-fade-in-gentle {/* Re-using from AppPromiseLoader */}
+      "
+    >
       {isLoggingIn ? (
         <>
+          {/* Refined Spinner - using sky color for consistency */}
           <svg
-            className="animate-spin h-8 w-8 text-indigo-600"
+            className="animate-spin h-8 w-8 text-sky-600" // Changed color
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -107,29 +117,36 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
             <path
               className="opacity-75"
               fill="currentColor"
-              d="M4 12a8 8 0 018-8v8z"
+              d="M4 12a8 8 0 018-8V4a8 8 0 00-8 8h0z" // Slightly adjusted path for a common spinner look
             />
           </svg>
-          <p className="text-indigo-600 font-medium">Tunaangalia taarifa zako...</p>
+          <p className="text-slate-700 font-medium animate-loader-fade-in-text-1"> {/* Re-using animation */}
+            Tunaangalia taarifa zako...
+          </p>
         </>
       ) : (
         <>
-          <svg
-            className="h-10 w-10 text-green-600"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-          <p className="text-green-700 font-semibold text-lg">
-            Umefanikiwa kuingia!<br />
+          {/* Success Icon with pop animation */}
+          <div className="p-2 bg-green-100 rounded-full animate-loader-success-pop"> {/* Added container for pop effect */}
+            <svg
+              className="h-10 w-10 text-green-600"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2.5" // Slightly thicker for more presence
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+          <p className="text-green-700 font-semibold text-lg animate-loader-fade-in-text-1">
+            Umefanikiwa kuingia!
+          </p>
+          <p className="text-slate-600 text-sm animate-loader-fade-in-text-2"> {/* Re-using animation */}
             Unapelekwa kwenye dashibodi...
           </p>
         </>
