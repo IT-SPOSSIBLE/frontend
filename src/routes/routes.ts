@@ -67,7 +67,7 @@ export const ROUTES: Routes = {
         name: "Jisajili", // Register
         element: Register,
         isPublic: true,
-        fornav: false
+        fornav: true,
     },
     LOGIN: {
         path: "/login",

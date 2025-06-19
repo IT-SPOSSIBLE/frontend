@@ -14,15 +14,15 @@ const Product: React.FC = () => {
   );
 
   return (
-    <div className="w-full min-h-screen bg-gray-300">
+    <div className="w-full min-h-screen bg-gray-300 mt-4">
       {/* Kichwa cha ukurasa */}
-      <h1 className="text-lg text-primary md:text-3xl mt-16 p-4 font-bold text-center h-20 animate-grow-x shadow-md bg-white rounded-r-lg">
+      <h1 className="mt-8 text-3xl text-center rounded-sm text-primary">
       Gundua Pikipiki Zote
       </h1>
 
       <motion.div>
       
-      <div className="flex flex-wrap gap-4 px-4  my-4 border-b border-gray-200 justify-center">
+      <div className="flex flex-wrap gap-4 px-4  my-4 border-b border-gray-200 justify-center text-2xl">
         {categories.map((category, index) => (
         <button
           key={index}
@@ -30,7 +30,7 @@ const Product: React.FC = () => {
           className={`relative px-6 py-3 text-sm font-medium slide-in-slow-right-to-left rounded-full transition-all duration-300 shadow-md
           ${
           activeIndex === index
-            ? "text-white bg-primary hover:bg-primary-dark whitespace-nowrap font-semibold"
+            ? "text-white bg-primary hover:bg-primary-dark whitespace-nowrap font-semibold text-2xl"
             : "text-gray-900 bg-white hover:bg-gray-100 whitespace-nowrap font-medium"
           }`}
         >
@@ -44,7 +44,7 @@ const Product: React.FC = () => {
       </motion.div>
 
      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-4 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-4 justify-items-center text-2xl">
         {filteredCard.map((item, index) => (
           <motion.div
         key={index}

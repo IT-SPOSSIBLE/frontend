@@ -33,6 +33,7 @@ const Register = () => {
 
     // Validate using Zod
     const result = userRegistrationSchema.safeParse(formData);
+    console.log(result);
 
     if (!result.success) {
       const errors = result.error.flatten().fieldErrors;
@@ -42,19 +43,32 @@ const Register = () => {
     }
 
     // If valid
-    console.log("Validated Data:", result.data);
+    // console.log("Validated Data:", result.data);
 
     try {
       const { confirmPassword, ...validData } = result.data;
       await register(validData);
-       setIsSubmitted(true);
+      setIsSubmitted(true);
       alert("Usajili umefanikiwa!");
-      // Optionally: navigate('/login');
+      setFormData({
+        first_name: "",
+        middle_name: "",
+        last_name: "",
+        phone_number: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        role: "",
+      });
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+      });
     } catch (error) {
       alert("Kuna tatizo kwenye usajili. Tafadhali jaribu tena.");
     } finally {
-    setIsLoading(false);
-  }
+      setIsLoading(false);
+    }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -110,7 +124,7 @@ const Register = () => {
         Usajili
       </h1>
 
-      <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-6 space-y-6 relative">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-6 space-y-6 relative ">
         <form
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
           onSubmit={handleRegister}
@@ -153,6 +167,7 @@ const Register = () => {
                 setFormData({ ...formData, role: e.target.value as UserRole })
               }
               options={[
+                { label: "Chagua aina ya mtumiaji", value: "" },
                 { label: "Mnunuzi", value: "buyer" },
                 { label: "Muuzaji", value: "seller" },
               ]}
@@ -163,7 +178,7 @@ const Register = () => {
           <div className="md:col-span-2">
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+              className="w-full py-2 px-4 bg-primary text-white rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 text-2xl"
             >
               Jisajili
             </button>
@@ -171,66 +186,68 @@ const Register = () => {
         </form>
 
         <div className="text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-2xl text-gray-600">
             Tayari una akaunti?{" "}
             <a href="/login" className="text-primary hover:underline">
               Ingia hapa
             </a>
           </p>
         </div>
-{(isLoading || isSubmitted) && (
-  <div className="absolute inset-0 z-50 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-md">
-    <div className="flex flex-col items-center gap-4 text-center">
-      {isLoading ? (
-        <>
-          <svg
-            className="animate-spin h-8 w-8 text-blue-600"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
-            />
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8v8z"
-            />
-          </svg>
-          <p className="text-blue-600 font-medium">Tafadhali subiri...</p>
-        </>
-      ) : (
-        <>
-          <svg
-            className="h-10 w-10 text-green-600"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-          <p className="text-green-700 font-semibold text-lg">
-            Umefanikiwa kusajiliwa!<br />
-            Tafadhali angalia email yako ili kudhibitisha akaunti.
-          </p>
-        </>
-      )}
-    </div>
-  </div>
-)}
-
+        {(isLoading || isSubmitted) && (
+          <div className="absolute inset-0 z-50 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-md text-2xl">
+            <div className="flex flex-col items-center gap-4 text-center">
+              {isLoading ? (
+                <>
+                  <svg
+                    className="animate-spin h-8 w-8 text-blue-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8z"
+                    />
+                  </svg>
+                  <p className="text-blue-600 font-medium">
+                    Tafadhali subiri...
+                  </p>
+                </>
+              ) : (
+                <>
+                  <svg
+                    className="h-10 w-10 text-green-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p className="text-green-700 font-semibold text-lg">
+                    Umefanikiwa kusajiliwa!
+                    <br />
+                    Tafadhali angalia email yako ili kudhibitisha akaunti.
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

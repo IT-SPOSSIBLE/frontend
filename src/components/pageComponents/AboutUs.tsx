@@ -31,7 +31,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-secondary text-white">
+    <div className="w-full min-h-screen bg-gray-200 text-white">
       <h1 className="text-3xl font-bold text-primary text-shadow-md text-center mt-16 p-4 animate-slide-in">
         Tunapenda Pikipiki, Tunaaminika na Waendesha Pikipiki
       </h1>
@@ -41,8 +41,8 @@ const AboutUs = () => {
         initial={{ opacity: 0, scale: 0.5 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="mt-4 items-center flex justify-center container mx-auto p-4">
-          <p className="text-gray-900 text-xl text-center animate-slide-in p-8 bg-gray-300 rounded-lg shadow-md">
+        <div className="mt-4 items-center flex justify-center container mx-auto p-4 text-2xl">
+          <p className="text-gray-900 text-center animate-slide-in p-8 rounded-lg shadow-md bg-white border-white/40">
             Karibu kwenye "it is possiple" – sehemu yako bora ya kununua na
             kuuza pikipiki za mitumba zenye ubora. Sisi ni timu ya wapenzi wa
             pikipiki tunaoamini kila mmoja anastahili usafiri wa kuaminika bila
@@ -50,19 +50,19 @@ const AboutUs = () => {
           </p>
         </div>
       </motion.div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 container mx-auto animate-slide-in p-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 container mx-auto animate-slide-in p-4 text-2xl">
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.5 }}
         >
           <div className="col-span-1 mt-5 bg-gray-300 shadow-lg rounded-lg overflow-hidden border border-gray-200">
-            <div className="bg-thirdy text-white p-4 text-center">
-              <h3 className="text-xl font-semibold">Sisi Ni Nani</h3>
+            <div className="bg-primary text-white p-4 text-center">
+              <h3 className="font-semibold">Sisi Ni Nani</h3>
             </div>
 
             <div className="p-6 flex flex-col justify-center items-center">
-              <p className="text-gray-900 text-center text-lg">
+              <p className="text-gray-900 text-center">
                 Tulianzishwa mwaka 2023 na tayari tumewasaidia mamia ya
                 waendesha pikipiki kupata usafiri bora au kuuza kwa urahisi na
                 usalama. Iwe unataka kuboresha usafiri wako au kuuza pikipiki ya
@@ -84,10 +84,10 @@ const AboutUs = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="col-span-1 mt-5 bg-gray-300 shadow-lg rounded-lg overflow-hidden border border-gray-200">
+          <div className="col-span-1 mt-5 bg-gray-300 shadow-lg rounded-lg overflow-hidden border border-gray-200 text-2xl">
             {/* Section Header */}
-            <div className="bg-thirdy text-white p-4 text-center">
-              <h3 className="text-xl font-semibold">Tunachofanya</h3>
+            <div className="bg-primary text-white p-4 text-center">
+              <h3 className="font-semibold">Tunachofanya</h3>
             </div>
 
             {/* Section Content */}
@@ -95,13 +95,13 @@ const AboutUs = () => {
               <ul className="space-y-4">
                 <li className="flex items-center gap-4">
                   <MdDirectionsBike className="text-3xl text-primary" />
-                  <span className="text-gray-800 text-lg">
+                  <span className="text-gray-800 text-2xl">
                     Tunatangaza pikipiki za mitumba zinazouzwa
                   </span>
                 </li>
                 <li className="flex items-center gap-4">
                   <MdSearch className="text-3xl text-primary" />
-                  <span className="text-gray-800 text-lg">
+                  <span className="text-gray-800 text-2xl">
                     Tunawasaidia wanunuzi kupata pikipiki bora
                   </span>
                 </li>
@@ -113,7 +113,7 @@ const AboutUs = () => {
                 </li>
                 <li className="flex items-center gap-4">
                   <MdBuild className="text-3xl text-primary" />
-                  <span className="text-gray-800 text-lg">
+                  <span className="text-gray-800 text-2xl">
                     Tunakuunganisha na mafundi au watoa huduma wa kuaminika
                   </span>
                 </li>
@@ -126,17 +126,12 @@ const AboutUs = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="col-span-1 mt-5 bg-gray-300 shadow-lg rounded-lg overflow-hidden border border-gray-200">
-            <div className="relative bg-thirdy text-white p-8 text-center overflow-hidden">
+          <div className="col-span-1 mt-5 bg-gray-300 shadow-lg rounded-lg overflow-hidden border border-gray-200 text-2xl">
+            <div className="relative bg-primary text-white p-8 text-center overflow-hidden">
               {/* Repeating background text */}
-              <div className="absolute inset-0 opacity-10 text-[80px] text-white font-bold whitespace-nowrap pointer-events-none select-none">
-                <div className="animate-marquee">
-                  UTUCHAGUE • UTUCHAGUE • UTUCHAGUE • UTUCHAGUE • UTUCHAGUE •
-                </div>
-              </div>
+             
 
-              {/* Foreground content */}
-              <h3 className="text-xl font-semibold relative z-10">
+              <h3 className="text-2xl font-semibold relative z-10">
                 Kwa Nini Utuchague?
               </h3>
             </div>
@@ -145,25 +140,25 @@ const AboutUs = () => {
               <ul className="space-y-4">
                 <li className="flex items-center gap-4">
                   <MdVerifiedUser className="text-3xl text-primary" />
-                  <span className="text-gray-800 text-lg">
+                  <span className="text-gray-800 ">
                     Matangazo yaliyohakikiwa
                   </span>
                 </li>
                 <li className="flex items-center gap-4">
                   <MdTouchApp className="text-3xl text-primary" />
-                  <span className="text-gray-800 text-lg">
+                  <span className="text-gray-800 ">
                     Urahisi wa kutumia tovuti
                   </span>
                 </li>
                 <li className="flex items-center gap-4">
                   <MdThumbUp className="text-3xl text-primary" />
-                  <span className="text-gray-800 text-lg">
+                  <span className="text-gray-800 ">
                     Msaada wa kweli na wa uaminifu
                   </span>
                 </li>
                 <li className="flex items-center gap-4">
                   <MdFavorite className="text-3xl text-primary" />
-                  <span className="text-gray-800 text-lg">
+                  <span className="text-gray-800">
                     Mapenzi ya dhati kwa pikipiki
                   </span>
                 </li>
@@ -190,7 +185,7 @@ const AboutUs = () => {
                   className="w-full h-full object-cover"
                 />
                 </div>
-                <div className="col-span-2 p-4 bg-primary/70 rounded-r-lg shadow-lg h-full flex  justify-center relative">
+                <div className="col-span-2 p-4 bg-primary/70 hover:bg-primary rounded-r-lg shadow-lg h-full flex  justify-center relative">
                 <h4 className="text-sm font-semibold text-white text-center">
                   {member.name}
                 </h4>

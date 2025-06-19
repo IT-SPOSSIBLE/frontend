@@ -16,5 +16,5 @@ export const userRegistrationSchema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Neno la siri halifanani",
-    path: ["confirmPassword"], // 👈 attaches the error to confirmPassword
+    path: ["confirmPassword"], 
   });

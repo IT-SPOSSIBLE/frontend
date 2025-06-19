@@ -5,6 +5,7 @@ const Login: React.FC = () => {
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
 const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
 
+
   const { login } = useAuth();
   const navigate = useNavigate();
   const[username,setUsername]=useState<string>('');
@@ -39,9 +40,9 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
         <h1 className="text-3xl font-semibold text-center text-primary mb-6">Ingia</h1> {/* "Login" in Swahili */}
 
         {/* Login Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 text-2xl">
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700" htmlFor="username">
+            <label className="block font-medium text-gray-700" htmlFor="username">
               Jina la mtumiaji
             </label>
             <input
@@ -56,7 +57,7 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700" htmlFor="password">
+            <label className="block font-medium text-gray-700" htmlFor="password">
               Neno la siri
             </label>
             <input
@@ -81,7 +82,7 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
 
         {/* Forgot Password Link */}
         <div className="mt-4 text-center">
-          <a href="#" className="text-sm text-primary hover:underline">
+          <a href="#" className="text-xl text-primary hover:underline">
             Umesahau neno lako la siri?
           </a>
         </div>

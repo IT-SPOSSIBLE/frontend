@@ -3,20 +3,11 @@ import { FaMotorcycle } from "react-icons/fa";
 import { motion } from "framer-motion";
 const ContactUs = () => {
   return (
-    <div className="w-full min-h-screen motion-present-bounce bg-thirdy text-white">
+    <div className="w-full min-h-screen motion-present-bounce bg-gray-300 text-white">
       <div className="relative text-center mt-16">
-  {/* Background Decorative Text */}
-  <div
-    className="absolute inset-0 flex justify-center items-center overflow-hidden pointer-events-none"
-    aria-hidden="true"
-  >
-    <h1 className="text-[40px] sm:text-[60px] lg:text-[80px] font-medium text-gray-300 opacity-5 whitespace-nowrap select-none tracking-wide">
-      Tunafurahi Kusikia
-    </h1>
-  </div>
-
+  
   {/* Foreground Main Title */}
-  <h1 className="relative text-2xl font-bold text-primary text-shadow-md animate-slide-in z-10">
+  <h1 className="relative text-3xl font-bold text-primary text-shadow-md animate-slide-in z-10 ">
     Tunafurahi Kusikia Kutoka Kwako!
   </h1>
 </div>
@@ -28,13 +19,13 @@ const ContactUs = () => {
       transition={{ duration: 0.5 }}
     >
      <div className="container mx-auto p-4 flex  flex-col items-center text-center text-gray-900 mt-4">
-        <p className="max-w-xl bg-gray-300 shadow-md rounded-md p-8 transition duration-300 ease-in-out hover:animate-pulse-white">
+        <p className="max-w-xl bg-white/40 shadow-md rounded-md text-2xl p-8 transition duration-300 ease-in-out hover:animate-pulse-white text-secondary">
           Una swali, unahitaji msaada, au unataka kuweka tangazo la pikipiki
           yako? Usisite kuwasiliana nasi — tupo kwa ajili yako kila wakati.
         </p>
       </div>
     </motion.div>
-      <div className="px-4 py-6 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-white">
+      <div className="px-4 py-6 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-secondary">
         {/* Sehemu ya Mawasiliano */}
 
         <motion.div
@@ -42,7 +33,7 @@ const ContactUs = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="space-y-4 flex flex-col justify-center items-center right-0 top-0">
+          <div className="space-y-4 flex flex-col justify-center items-center right-0 top-0 text-2xl">
             <h2 className="text-2xl font-semibold text-shadow-sm text-center">
               Taarifa za Mawasiliano
             </h2>
@@ -74,7 +65,7 @@ const ContactUs = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="space-y-4 text-white justify-center items-center left-0 top-0">
+          <div className="space-y-4 text-secondary justify-center items-center left-0 top-0 text-2xl">
             <form className="w-full h-full space-y-4">
               <h2 className="m-4 p-8 text-2xl font-semibold text-shadow-sm text-center">
                 Tutumie Ujumbe

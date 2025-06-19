@@ -17,20 +17,20 @@ const CardMoto: React.FC<CardProps> = ({ title, value, image }) => {
   };
 
   return (
-    <div className="w-[340px] h-[360px] rounded-lg bg-secondary relative shadow-md overflow-hidden">
+    <div className="w-[340px] h-[360px] rounded-lg bg-primary/60 hover:bg-primary relative shadow-md overflow-hidden text-2xl">
       
       {/* Top Section */}
       <div className="w-full h-[100px] grid grid-cols-3 gap-4 mt-4 text-white px-2">
         <div className="flex justify-center items-center">
-          <h2 className="text-lg font-semibold">{title}</h2>
+          <h2 className="font-semibold">{title}</h2>
         </div>
         <div className="flex justify-center items-center">
-          <p className="text-base font-medium">{value}</p>
+          <p className="font-medium">{value}</p>
         </div>
         <div className="flex justify-center items-center">
           <button
             onClick={handleNavigate}
-            className="px-3 py-1 bg-white text-secondary rounded hover:bg-gray-100 transition"
+            className="px-3 py-1 bg-white text-secondary rounded hover:text-black transition text-2xl"
           >
             Explore
           </button>

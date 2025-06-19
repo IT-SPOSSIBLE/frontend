@@ -41,25 +41,15 @@ export const refreshToken = async (): Promise<string> => {
   }
 };
 
-export const logout = async (
-  refresh: string,
-  accessToken: string
-): Promise<void> => {
+export const logout = async (refresh: string): Promise<void> => {
   try {
-    await apiclient.post(
-      API_ENDPOINTS.users.logout,
-      { refresh },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+    await apiclient.post(API_ENDPOINTS.users.logout, { refresh });
   } catch (error) {
     console.error("Logout error:", error);
     throw error;
   }
 };
+
 
 
 interface RegisterPayload {
@@ -74,8 +64,9 @@ interface RegisterPayload {
 
 export const register = async (data: RegisterPayload): Promise<void> => {
   try {
+    console.log("DATA:",data);
     const response = await apiclient.post(API_ENDPOINTS.users.register, data);
-    console.log('Registration response:', response.data);
+    console.log(response.data);
   } catch (error) {
     console.error('Registration error:', error);
     throw error;

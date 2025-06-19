@@ -22,7 +22,7 @@ const InputField = ({
   icon,
 }: InputFieldProps) => (
   <div>
-    <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+    <label htmlFor={name} className="block text-2xl font-medium text-gray-700 ">
       {label}
     </label>
     <div className="relative mt-2">
