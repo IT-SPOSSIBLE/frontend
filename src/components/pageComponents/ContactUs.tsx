@@ -1,7 +1,40 @@
 import { MdEmail, MdPhone, MdLocationOn, MdAccessTime } from "react-icons/md";
 import { FaMotorcycle } from "react-icons/fa";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
+import { useRef } from 'react';
+
 const ContactUs = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+  
+    if (form.current) {
+      console.log("Sending email with values:", form.current);
+  
+      emailjs
+        .sendForm(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          form.current,
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+          (result) => {
+            console.log("SUCCESS:", result.text);
+            alert("Ujumbe umetumwa kikamilifu!");
+            form.current?.reset();
+          },
+          (error) => {
+            console.error("FAILED:", error.text);
+            alert("Samahani, kulikosekana. Tafadhali jaribu tena baadae.");
+          }
+        );
+    } else {
+      console.error("Form reference is null.");
+    }
+  };
+  
   return (
     <div className="w-full min-h-screen motion-present-bounce bg-gray-300 text-white">
       <div className="relative text-center mt-16">
@@ -66,13 +99,14 @@ const ContactUs = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="space-y-4 text-secondary justify-center items-center left-0 top-0 text-2xl">
-            <form className="w-full h-full space-y-4">
+            <form className="w-full h-full space-y-4" ref={form} onSubmit={sendEmail}>
               <h2 className="m-4 p-8 text-2xl font-semibold text-shadow-sm text-center">
                 Tutumie Ujumbe
               </h2>
               <div className="mx-4 px-8">
                 <input
                   type="text"
+                  name="user_name"
                   placeholder="Jina Kamili"
                   className="w-full border border-first p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-0"
                 />
@@ -80,6 +114,8 @@ const ContactUs = () => {
               <div className="mx-4 px-8">
                 <input
                   type="email"
+                  name="user_email"
+                  required
                   placeholder="Barua Pepe"
                   className="w-full border border-first p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-0"
                 />
@@ -87,6 +123,8 @@ const ContactUs = () => {
               <div className="mx-4 px-8">
                 <textarea
                   placeholder="Ujumbe Wako / Kichwa cha Habari"
+                  name="user_message"
+                  required
                   rows={4}
                   className="w-full border border-first p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-0"
                 ></textarea>

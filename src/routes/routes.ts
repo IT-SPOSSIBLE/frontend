@@ -84,8 +84,8 @@ export const ROUTES: Routes = {
         fornav: false
     },
     MORE: {
-        path: "/more",
-        name: "More", // Admin Panel
+        path: "/more/:id",
+        name: "More", 
         element: More,
         isPublic: true,
         fornav: false

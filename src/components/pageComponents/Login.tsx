@@ -51,7 +51,7 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
               name="username"
               onChange={(e) => setUsername(e.target.value)}
               value={username}
-              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full text-lg px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Ingiza jina lako la mtumiaji"
             />
           </div>
@@ -66,7 +66,7 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-2 text-lg mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Ingiza neno lako la siri"
             />
           </div>

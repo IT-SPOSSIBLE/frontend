@@ -10,7 +10,7 @@ import {
 } from "react-icons/md";
 import { motion } from "framer-motion";
 import image1 from "../../assets/joshua.jpeg";
-import image2 from "../../assets/mlekwa.jpeg";
+import image2 from "../../assets/mlekwa1.jpeg";
 import image3 from "../../assets/chesco.jpeg";
 
 const AboutUs = () => {

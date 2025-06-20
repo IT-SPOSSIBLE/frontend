@@ -7,11 +7,7 @@ export interface Product {
     posted_by: number;
     category: {
         id: number;
-        name: string;
+        category_name: string;
     };
-    motocycleImage: {
-        id: number;
-        image: string;
-        is_primary: boolean;
-    };
+  
 }

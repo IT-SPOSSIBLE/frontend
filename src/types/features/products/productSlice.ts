@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Product } from "./productType";
 import { API_ENDPOINTS } from "../../../api/endpoints";
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 interface ProductState {
   product: Product[];
   loading: boolean;
@@ -19,9 +19,9 @@ export const fetchProducts = createAsyncThunk<Product[]>(
   "products/fetchProducts",
   async () => {
     const res = await axios.get<Product[]>(
-      `${API_BASE_URL}${API_ENDPOINTS.products}`
+      `${API_BASE_URL}${API_ENDPOINTS.products.list}`
     );
-
+    console.log("Fetched products:", res.data);
     return res.data;
   }
 );
