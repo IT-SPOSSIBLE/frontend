@@ -40,7 +40,7 @@ const Product: React.FC = () => {
   return (
     <div className="w-full min-h-screen bg-gray-100 mt-4 pb-8">
       <h1 className="pt-8 text-3xl text-center text-primary font-bold">
-        Gundua Pikipiki Zote
+        Angalia pikipiki zote zilizopo
       </h1>
 
       <motion.div>
