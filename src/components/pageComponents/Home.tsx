@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import image from '../../assets/itispossible.jpeg'
 const Home = () => {
   const navigate = useNavigate();
 
@@ -7,9 +7,9 @@ const Home = () => {
     <div className="relative w-full min-h-screen bg-gradient-to-r from-gray-700 via-gray-900 to-black overflow-hidden">
       {/* Background Image */}
       <img
-        src="https://media.gettyimages.com/id/109726153/photo/motorcycles.jpg?s=2048x2048&w=gi&k=20&c=6_8M926q4WHZFU9k5ctS9wJ1SvEdSdtCa2XKmdEXm7s="
+        src={image}
         alt="Second-hand motorcycles"
-        className="absolute inset-0 w-full h-full object-cover opacity-60"
+        className="absolute inset-0 w-full h-full object-cover opacity-60 "
       />
 
       {/* Overlay */}
