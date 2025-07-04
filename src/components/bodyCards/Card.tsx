@@ -19,11 +19,11 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div
       className="bg-gradient-to-r from-[#ffff] to-secondary group-hover:from-white  group-hover:to-[#154360]
- hover:scale-105 hover:shadow-2xl  group-hover:brightness-110 transition duration-300 border border-primary border-2 rounded-lg shadow-sm w-80 mx-auto "
+ hover:scale-105 hover:shadow-2xl  group-hover:brightness-110 transition duration-300  border-primary border-2 rounded-lg shadow-sm w-80 mx-auto h-96"
     >
       <div className="relative">
         {/* <img
-                   src={imageUrl}
+                   src='https://www.shutterstock.com/image-photo/motorbike-on-road-riding-having-260nw-1838812744.jpg'
                     alt={title}
                     className="w-full h-44 object-conatin border-b border-gray-200 p-2"
                 /> */}
