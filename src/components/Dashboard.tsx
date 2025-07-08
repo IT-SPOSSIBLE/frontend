@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 // import Loader from "../components/ui/Loader";
-import { Loader } from "lucide-react";
+// import { Loader } from "lucide-react";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import {
   MdDirectionsBike,
@@ -28,6 +28,7 @@ import {
 } from "chart.js";
 import { Product } from "../types/features/products/productType";
 import { AppDispatch } from "../state/store";
+import AppPromiseLoader from "../AppPromiseLoader";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -50,7 +51,7 @@ const Dashboard: React.FC = () => {
   const availableBikes = products.filter((products:Product)=>products.status === 'available').length;
   const soldBikes = products.filter((products:Product) => products.status === 'sold').length;
 
-  if (loading) return <Loader />;
+  if (loading) return <AppPromiseLoader />;
   if (error) return <ErrorMessage message={error} />;
 
   const cardData = [
