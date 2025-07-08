@@ -1,48 +1,59 @@
-import React,{useState} from 'react';
-import {useAuth} from '../../hooks/useAuth';
+import React, { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import AppPromiseLoader from "../../AppPromiseLoader"; // Adjust the import path as necessary
 const Login: React.FC = () => {
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
-const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
-
+  const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { login } = useAuth();
   const navigate = useNavigate();
-  const[username,setUsername]=useState<string>('');
-  const[password,setPassword]=useState<string>('');
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleSubmit=async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoggingIn(true);
     setLoginSuccess(false);
+    setErrorMessage("");
     try {
       await login(username, password);
 
       setLoginSuccess(true);
-        setTimeout(() => {
-      // Replace this with your redirect/navigation logic
-      // window.location.href = ""; 
-      navigate("/")
-    }, 1500);
+      setTimeout(() => {
+        // Replace this with your redirect/navigation logic
+        // window.location.href = "";
+        navigate("/");
+      }, 1500);
       // Redirect or show success message
-    }catch (error) {
-      console.error('Login failed:', error);
+    } catch (error) {
+      console.error("Login failed:", error);
+      setErrorMessage("Jina la mtumiaji au neno la siri si sahihi.");
       // Show error message
-    }finally {
-    setIsLoggingIn(false);
-  }
-  }
+    } finally {
+      setIsLoggingIn(false);
+    }
+  };
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-tr from-gray-200 to-gray-300 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
         {/* Title */}
-        <h1 className="text-3xl font-semibold text-center text-primary mb-6">Ingia</h1> {/* "Login" in Swahili */}
-
-        {/* Login Form */}
+        <h1 className="text-3xl font-semibold text-center text-primary mb-6">
+          Ingia
+        </h1>{" "}
+        {errorMessage && (
+          <div className="mt-4 text-center text-red-600 text-lg">
+            {errorMessage}
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4 text-2xl">
           <div className="mb-4">
-            <label className="block font-medium text-gray-700" htmlFor="username">
+            <label
+              className="block font-medium text-gray-700"
+              htmlFor="username"
+            >
               Jina la mtumiaji
             </label>
             <input
@@ -57,7 +68,10 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
           </div>
 
           <div className="mb-6">
-            <label className="block font-medium text-gray-700" htmlFor="password">
+            <label
+              className="block font-medium text-gray-700"
+              htmlFor="password"
+            >
               Neno la siri
             </label>
             <input
@@ -79,7 +93,6 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
             Ingia
           </button>
         </form>
-
         {/* Forgot Password Link */}
         <div className="mt-4 text-center">
           <a href="#" className="text-xl text-primary hover:underline">
@@ -87,11 +100,11 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
           </a>
         </div>
         {(isLoggingIn || loginSuccess) && (
-  <div className="absolute inset-0 z-50 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-md">
-    <div className="flex flex-col items-center gap-4 text-center">
-      {isLoggingIn ? (
-        <>
-          <svg
+          <div className="absolute inset-0 z-50 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-md">
+            <div className="flex flex-col items-center gap-4 text-center">
+              {isLoggingIn ? (
+                <>
+                  {/* <svg
             className="animate-spin h-8 w-8 text-indigo-600"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -111,34 +124,35 @@ const [loginSuccess, setLoginSuccess] = useState<boolean>(false);
               d="M4 12a8 8 0 018-8v8z"
             />
           </svg>
-          <p className="text-indigo-600 font-medium">Tunaangalia taarifa zako...</p>
-        </>
-      ) : (
-        <>
-          <svg
-            className="h-10 w-10 text-green-600"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-          <p className="text-green-700 font-semibold text-lg">
-            Umefanikiwa kuingia!<br />
-            Unapelekwa kwenye dashibodi...
-          </p>
-        </>
-      )}
-    </div>
-  </div>
-)}
-
+          <p className="text-indigo-600 font-medium">Tunaangalia taarifa zako...</p> */}
+                  <AppPromiseLoader message="Tafadhali subiri..." />
+                </>
+              ) : (
+                <>
+                  <svg
+                    className="h-10 w-10 text-green-600"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p className="text-green-700 font-semibold text-lg">
+                    Umefanikiwa kuingia!
+                    <br />
+                    Unapelekwa kwenye dashibodi...
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

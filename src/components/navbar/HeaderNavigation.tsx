@@ -20,7 +20,7 @@ const handleLogout = async () => {
 
   return (
     <div>
-      <div className="hidden md:grid grid-cols-5 fixed left-0 z-50 w-full gap-4 h-16 bg-secondary justify-center items-center border-b-1 border-primary overflow-hidden">
+      <div className="hidden md:grid grid-cols-5 fixed left-0 z-50 w-full gap-4 h-20 bg-secondary justify-center items-center border-b-1 border-primary overflow-hidden">
         {/* Left Logo */}
         <div className="col-span-1 flex justify-center items-center text-center">
           <div className="flex flex-row items-center">

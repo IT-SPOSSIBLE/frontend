@@ -1,4 +1,10 @@
-import React from "react";
+import React,{useEffect} from "react";
+import { fetchProducts } from "../types/features/products/productSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
+import Loader from "../components/ui/Loader";
+import ErrorMessage from "../components/ui/ErrorMessage";
 import {
   MdDirectionsBike,
   MdList,
@@ -19,6 +25,8 @@ import {
   LineElement,
   PointElement,
 } from "chart.js";
+import { Product } from "../types/features/products/productType";
+import { AppDispatch } from "../state/store";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -26,16 +34,32 @@ ChartJS.register(
   LineElement,
   PointElement
 );
-const cardData = [
-  { icon: MdDirectionsBike, title: "Total Listings", value: "140" },
-  { icon: MdList, title: "Available Bikes", value: "7" },
-  { icon: MdHelpOutline, title: "Sold Bikes", value: "3" },
-  { icon: MdMessage, title: "Inquiries", value: "10" },
-  { icon: MdAnalytics, title: "Support Requests", value: "5" },
-  { icon: MdDashboard, title: "Dashboard Access", value: "200" },
-];
+
 
 const Dashboard: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+  
+  const products=useSelector((state:RootState)=>state.products.product);
+  const loading = useSelector((state: RootState) => state.products.loading);
+  const error = useSelector((state: RootState) => state.products.error);
+  const totalListings = products.length;
+  const availableBikes = products.filter((products:Product)=>products.status === 'available').length;
+  const soldBikes = products.filter((products:Product) => products.status === 'sold').length;
+
+  if (loading) return <Loader />;
+  if (error) return <ErrorMessage message={error} />;
+
+  const cardData = [
+    { icon: MdDirectionsBike, title: "Total Listings", value: totalListings.toString() },
+    { icon: MdList, title: "Available Bikes", value: availableBikes.toString() },
+    { icon: MdHelpOutline, title: "Sold Bikes", value: soldBikes.toString() },
+    { icon: MdMessage, title: "Inquiries", value: "10" },
+    { icon: MdAnalytics, title: "Support Requests", value: "5" },
+    { icon: MdDashboard, title: "Dashboard Access", value: "200" },
+  ];
   return (
     <div className="grow p-8 ">
       <h2 className="text-2xl mt-4">Dashboard</h2>

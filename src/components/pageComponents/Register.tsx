@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { FaUser, FaPhone, FaEnvelope, FaLock } from "react-icons/fa";
 import React, { useState } from "react";
 import {
@@ -8,6 +9,7 @@ import { register } from "../../api/services/Auth";
 import InputField from "../../components/form/InputField";
 import SelectField from "../../components/form/SelectField";
 import { userRegistrationSchema } from "../../types/validationSchema";
+import AppPromiseLoader from "../../AppPromiseLoader";
 const Register = () => {
   const [formErrors, setFormErrors] = useState<{ [key: string]: string[] }>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -34,16 +36,16 @@ const Register = () => {
     // Validate using Zod
     const result = userRegistrationSchema.safeParse(formData);
     console.log(result);
-
     if (!result.success) {
       const errors = result.error.flatten().fieldErrors;
-      setFormErrors(errors); // Set validation errors to state
+      setFormErrors(errors);
       console.log("Validation Errors:", errors);
+      setIsLoading(false);  // <-- FIX HERE
       return;
     }
+    
 
-    // If valid
-    // console.log("Validated Data:", result.data);
+
 
     try {
       const { confirmPassword, ...validData } = result.data;
@@ -198,7 +200,7 @@ const Register = () => {
             <div className="flex flex-col items-center gap-4 text-center">
               {isLoading ? (
                 <>
-                  <svg
+                  {/* <svg
                     className="animate-spin h-8 w-8 text-blue-600"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -220,7 +222,8 @@ const Register = () => {
                   </svg>
                   <p className="text-blue-600 font-medium">
                     Tafadhali subiri...
-                  </p>
+                  </p> */}
+                  <AppPromiseLoader/>
                 </>
               ) : (
                 <>
