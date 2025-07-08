@@ -3,7 +3,8 @@ import { fetchProducts } from "../types/features/products/productSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
-import Loader from "../components/ui/Loader";
+// import Loader from "../components/ui/Loader";
+import { Loader } from "lucide-react";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import {
   MdDirectionsBike,
